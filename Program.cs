@@ -1,15 +1,19 @@
 ﻿
 class Human
 {
+    public static string ClassName = "Human";
+    public static int Count = 0;
+
     public string name;
     public int age;
     public string eyeColor = "Blue";
 
-    public Human(string getName, int getAge)
+    public Human(string argName, int argAge)
     {
-        this.name = getName;
-        this.age = getAge;
+        this.name = argName;
+        this.age = argAge;
         Console.WriteLine($"Hello, {this.name} is born!");
+        Human.Count++;
     }
     
     public void Introduce()
@@ -41,6 +45,9 @@ class Program
         humans.Add(new Human("Oskars", 25));
         humans.Add(new Human("Indrek", 18));
         humans.Add(new Human("Teele", 22));
+        humans.Add(new Human("Alex", 19));
+
+        Console.WriteLine($"You have spawned {Human.Count} humans.");
 
         for (int i = 0; i < humans.Count; i++)
         {
@@ -50,6 +57,6 @@ class Program
         foreach (var human in humans)
         {
             human.Eat("Avocado");
-        }
+        }        
     }
 }
