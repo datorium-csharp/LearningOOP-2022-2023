@@ -5,6 +5,13 @@ class Human
     public int age;
     public string eyeColor = "Blue";
 
+    public Human(string getName, int getAge)
+    {
+        this.name = getName;
+        this.age = getAge;
+        Console.WriteLine($"Hello, {this.name} is born!");
+    }
+    
     public void Introduce()
     {
         Console.WriteLine($"Hey, my name is {this.name} and I am {this.age} years old.");
@@ -12,7 +19,7 @@ class Human
 
     public void Eat(string food)
     {
-        Console.WriteLine($"I am eating {food}.");
+        Console.WriteLine($"{this.name} is eating {food}.");
     }
 
     public void StopEating()
@@ -26,20 +33,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        var human1 = new Human();//new virtual human is born
-        human1.name = "Anna";
-        human1.age = 16;
-        //Console.WriteLine($"Hi, my name is {human1.name} and I am {human1.age} years old.");
-        human1.Introduce();
-        Console.WriteLine($"{human1.name} has {human1.eyeColor} eyes.");
-        human1.Eat("avocado");
-        human1.StopEating();
+        List<Human> humans = new List<Human>();
 
-        var human2 = new Human();
-        human2.name = "Markus";
-        human2.age = 19;
-        human2.eyeColor = "Brown";
-        human2.Introduce();
-        Console.WriteLine($"{human2.name} has {human2.eyeColor} eyes.");
+        humans.Add(new Human("Anna", 16));
+        humans.Add(new Human("John", 20));
+        humans.Add(new Human("Jenifer", 5));
+        humans.Add(new Human("Oskars", 25));
+        humans.Add(new Human("Indrek", 18));
+        humans.Add(new Human("Teele", 22));
+
+        for (int i = 0; i < humans.Count; i++)
+        {
+            humans[i].Introduce();
+        }
+
+        foreach (var human in humans)
+        {
+            human.Eat("Avocado");
+        }
     }
 }
